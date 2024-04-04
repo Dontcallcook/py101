@@ -1,4 +1,22 @@
 {
-"welcome_message" : "Welcome to Calculator!\n",
-"not_a_number" : "Hmm...that doesn't seem to be a number."
+"en" : {
+    "welcome_message" : "Welcome to Calculator!\n",
+    "first_value" : "First value: ",
+    "second_value" : "Second value: ",
+    "not_a_number" : "Hmm...that doesn't seem to be a number.",
+    "choose_operator" : "\nChoose your operator:\n1.Plus 2.Minus 3.Multiply 4.Divide: ",
+    "not_operator" : "Please enter 1, 2, 3, or 4",
+    "zero_division_error" : "You can't divide by zero. Pick a new operation.",
+    "goodbye_message" : "Goodbye!"
+    },
+"es" : {
+    "welcome_message": "¡Bienvenido al Calculador!\n",
+    "first_value": "Primer valor: ",
+    "second_value": "Segundo valor: ",
+    "not_a_number": "Hmm... eso no parece ser un número.",
+    "choose_operator": "\nElige tu operador:\n1.Suma 2.Resta 3.Multiplicación 4.División: ",
+    "not_operator": "Por favor ingresa 1, 2, 3, o 4",
+    "zero_division_error": "No puedes dividir por cero. Elige una nueva operación.",
+    "goodbye_message": "¡Adiós!"
+    }
 }

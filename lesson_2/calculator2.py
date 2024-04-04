@@ -1,61 +1,69 @@
 import json
 
 with open('calculator_messages.json', 'r') as file:
-    data = json.load(file)
+    MESSAGE = json.load(file)
+
 
 def prompt(message):
     print(f"---> {message}")
 
 def not_valid(number_str):
     try:
-        int(number_str)
+        float(number_str)
     except ValueError:
         return True
     return False
+    
+def messages(message, lang='en'):
+    return MESSAGE[lang][message]
 
-prompt(data["welcome_message"])
+LANGUAGE = 'es'
+
+prompt(messages("welcome_message", LANGUAGE))
 
 while True:
-
-    prompt("First value: ")
+    prompt(messages("first_value", LANGUAGE))
     value_1 = input()
     
     while not_valid(value_1) is True:
-        prompt("Hmm...that doesn't seem to be a number.")
+        prompt(messages("not_a_number", LANGUAGE))
         value_1 = input()
     
-    prompt("Second value: ")
+    prompt(messages("second_value", LANGUAGE))
     value_2 = input()
     
     while not_valid(value_2) is True:
-        prompt("Hmm...that doesn't seem to be a number.")
+        prompt(messages("not_a_number", LANGUAGE))
         value_2 = input()
     
-    prompt("Choose your operator:\n1.Plus 2.Minus 3.Multiply 4.Divide: ")
+    prompt(messages("choose_operator", LANGUAGE))
     operation = input()
     
     while operation not in ["1", "2", "3", "4"]:
-        prompt("Please enter 1, 2, 3, or 4")
+        prompt(messages("not_operator", LANGUAGE))
         operation = input()
     
     if operation == "4":
         try:
             int(value_1) / int(value_2)
         except ZeroDivisionError:
-            prompt("You can't divide by zero. Pick a new operation.")
+            prompt(messages("zero_division_error", LANGUAGE))
             operation = input()
+
+    match operation:
+        case '1':
+            output = float(value_1) + float(value_2)
+        case '2': 
+            output = float(value_1) - float(value_2)
+        case '3':
+            output = float(value_1) * float(value_2)
+        case '4':
+            output = float(value_1) / float(value_2)
     
-    if operation == "1":
-        prompt(f"Your calculation evaluates to {int(value_1) + int(value_2)}.")
-    elif operation == "2":
-        prompt(f"Your calculation evaluates to {int(value_1) - int(value_2)}.")
-    elif operation == "3":
-        prompt(f"Your calculation evaluates to {int(value_1) * int(value_2)}.")
-    elif operation == "4":
-        prompt(f"Your calculation evaluates to {int(value_1) // int(value_2)}.")
+    prompt(f"Your calculation evaluates to {output}.")
 
     print("Would you like to perform another calculation?\nY/N")
     new_calc = input().upper()
     if new_calc and new_calc[0] != "Y":
-        prompt("Goodbye!")
+        prompt(messages("goodbye_message", LANGUAGE))
         break
