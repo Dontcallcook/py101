@@ -49,7 +49,7 @@ def menu_selection():
 #Tells the player to get ready
 #Iterates and prints values in VALID_CHOICE_DICT to imitate countdown
 def countdown():
-    prompt(f"<-------ROUND {round_number} /// "
+    prompt(f"<-------ROUND {ROUND_NUMBER} /// "
     +  messages("countdown_message") + "--------->")
     time.sleep(2)
     prompt("")
@@ -99,7 +99,7 @@ def display_grandmaster():
 #SET score
 PLAYER_SCORE = 0
 COMPUTER_SCORE = 0
-round_number = 1
+ROUND_NUMBER = 1
 
 #GET player's name'
 prompt(messages("input_name"))
@@ -133,7 +133,8 @@ while True:
     #SET player_choice as a VALID_CHOICE_DICT value, e.g., "rock"
     player_choice = VALID_CHOICE_DICT[player_choice]
 
-    #SET computer_choice as random.choice from WINNING_MOVES keys, e.g., "paper"
+    #SET computer_choice as random.choice
+    #from WINNING_MOVES keys, e.g., "paper"
     computer_choice = random.choice(list(WINNING_MOVES))
 
     #PRINT countdown
@@ -148,7 +149,8 @@ while True:
     prompt(decide_winner(player_choice, computer_choice))
     prompt(messages("empty_seperator"))
 
-    #SET scoreboard variables by returning decide_winner value to score_distribution
+    #SET scoreboard variables by returning
+    #decide_winner value to score_distribution
     if (score_distribution(decide_winner(player_choice, computer_choice))
     == "player"):
         PLAYER_SCORE += 1
@@ -161,10 +163,10 @@ while True:
     prompt("$C0RE_B0RED")
     prompt(f"{PLAYER_NAME}: {PLAYER_SCORE}  //  Computer: {COMPUTER_SCORE}")
     prompt(messages("seperator"))
-    
+
     #SET round number
-    round_number += 1
-    
+    ROUND_NUMBER += 1
+
     #PRINT the Grandmaster
     display_grandmaster()
 
@@ -172,7 +174,7 @@ while True:
     if COMPUTER_SCORE == 3 or PLAYER_SCORE == 3:
         COMPUTER_SCORE = 0
         PLAYER_SCORE = 0
-        round_number = 1
+        ROUND_NUMBER = 1
 
     #GET input asking if user wants to play again
     prompt(f"Would you like to play again, {PLAYER_NAME}? (y/n)")
@@ -189,5 +191,5 @@ while True:
     if play_again.startswith('n'):
         prompt(messages("thanks"))
         break
-    
+
 #END
