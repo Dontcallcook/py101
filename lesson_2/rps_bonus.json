@@ -1,15 +1,12 @@
 {
-"formatting": {
-    "line_seperator" : "<--------------------------------->",
-    "empty_seperator" : ""
-    },
-"messages": {
-    "input_name" : "What's your name?",
-    "not_valid" : "Your choice isn'nt valid!",
-    "winning_message" : "$$** You win! :D **$$",
+    "input_name" : "Before we begin playing...what's your name?",
+    "not_valid" : "Hmm...your choice isn'nt valid!",
+    "countdown_message" : "GET READY TO BATTLE!!! >:OOO",
+    "winning_message" : "$$$$***$$**$ You win! :D $**$$***$$$$",
     "losing_message" : "Sorry, you lose! :*(",
     "tie_message" : "It's a tie!",
     "enter_y_n" : "Please enter 'y' or 'n'",
-    "thanks" : "Ok, thanks for playing Rock, Paper, Scissors, Lizard, Spock!"
-    }
+    "thanks" : "Ok, thanks for playing Rock, Paper, Scissors, Lizard, Spock!",
+    "seperator" : "<-------------------------------------------------------->",
+    "empty_seperator" : ""
 }

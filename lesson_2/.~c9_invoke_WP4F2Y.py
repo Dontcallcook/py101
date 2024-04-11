@@ -21,21 +21,17 @@ WINNING_MOVES = {
     "spock" : ["scissors", "rock"],
 }
 
-#Prints a prompt before ach message
 def prompt(message):
     print(f"====> {message}")
 
-#Returns a message from the rps_bonus.json file
 def messages(message):
     return MESSAGE[message]
 
-#Determines if the input is one of the keys in VALID_CHOICE_DICT
 def not_valid_choice(player_input):
     if player_input not in VALID_CHOICE_DICT:
         return True
     return False
 
-#Prints a menu selection
 def menu_selection():
     prompt("""Please make your selection:
     
@@ -46,11 +42,8 @@ def menu_selection():
         5. 'SP' for Spock
         """)
 
-#Tells the player to get ready
-#Iterates and prints values in VALID_CHOICE_DICT to imitate countdown
 def countdown():
-    prompt(f"<-------ROUND {round_number} /// "
-    +  messages("countdown_message") + "--------->")
+    prompt(messages("countdown_message"))
     time.sleep(2)
     prompt("")
     for _, value in VALID_CHOICE_DICT.items():
@@ -64,7 +57,7 @@ def countdown():
     prompt("SHOOT!!!!!!!")
     time.sleep(1)
 
-#Reads the player's and computer's choices
+#Reads the player's and computer's choice
 #Returns a string declaring winner
 def decide_winner(player, computer):
     if player == computer:
@@ -73,33 +66,31 @@ def decide_winner(player, computer):
         return messages("winning_message")
     return messages("losing_message")
 
-def score_distribution(result):
+def set_score(result):
     if result == messages("winning_message"):
         return "player"
     if result == messages("losing_message"):
         return "computer"
     return None
 
-#Determines when a score of 3 is reached and prints grandmaster
 def display_grandmaster():
     if PLAYER_SCORE == 3:
-        prompt(messages("empty_seperator"))
+        prompt("")
         prompt(f"***!!!CONGRATULATIONS, {PLAYER_NAME.upper()}!!!***")
         prompt("By winning three games, "
         "you have been declared the RPSLSP Grandmaster!")
-        prompt(messages("empty_seperator"))
+        prompt("")
     if COMPUTER_SCORE == 3:
-        prompt(messages("empty_seperator"))
+        prompt("")
         prompt("Oh dear...by winning three games, "
         "Computer has been declared the RPSLSP Grandmaster!")
         prompt("Challenge them again to take the title!")
-        prompt(messages("empty_seperator"))
+        prompt("")
 
 #START
 #SET score
 PLAYER_SCORE = 0
 COMPUTER_SCORE = 0
-round_number = 1
 
 #GET player's name'
 prompt(messages("input_name"))
@@ -130,17 +121,18 @@ while True:
 
     prompt(messages("seperator"))
 
-    #SET player_choice as a VALID_CHOICE_DICT value, e.g., "rock"
+
+    #SET player_choice as a VALID_CHOICE_DICT key
     player_choice = VALID_CHOICE_DICT[player_choice]
 
-    #SET computer_choice as random.choice from WINNING_MOVES keys, e.g., "paper"
+    #GET computer choice
     computer_choice = random.choice(list(WINNING_MOVES))
 
     #PRINT countdown
     countdown()
     prompt(messages("empty_seperator"))
 
-    #PRINT player's and computer's choices
+    #PRINT choices
     prompt(f"You chose {player_choice.capitalize()}, "
     f"Computer chose {computer_choice.capitalize()}.")
 
@@ -148,11 +140,11 @@ while True:
     prompt(decide_winner(player_choice, computer_choice))
     prompt(messages("empty_seperator"))
 
-    #SET scoreboard variables by returning decide_winner value to score_distribution
-    if (score_distribution(decide_winner(player_choice, computer_choice))
+    #SET scoreboard variables
+    if (set_score(decide_winner(player_choice, computer_choice))
     == "player"):
         PLAYER_SCORE += 1
-    elif (score_distribution(decide_winner(player_choice, computer_choice))
+    elif (set_score(decide_winner(player_choice, computer_choice))
     == "computer"):
         COMPUTER_SCORE += 1
 
@@ -161,33 +153,32 @@ while True:
     prompt("$C0RE_B0RED")
     prompt(f"{PLAYER_NAME}: {PLAYER_SCORE}  //  Computer: {COMPUTER_SCORE}")
     prompt(messages("seperator"))
-    
-    #SET round number
-    round_number += 1
-    
+
     #PRINT the Grandmaster
     display_grandmaster()
-
+    
+    #PRINT next round
+    prompt("ROUND str(PLAYER_SCORE + COMPUTER_SCORE + 1:
+    
     #SET score reset
     if COMPUTER_SCORE == 3 or PLAYER_SCORE == 3:
         COMPUTER_SCORE = 0
         PLAYER_SCORE = 0
-        round_number = 1
 
     #GET input asking if user wants to play again
-    prompt(f"Would you like to play again, {PLAYER_NAME}? (y/n)")
-    play_again = input().lower().strip()
-
-    #validate input
-    while True:
-        if play_again.startswith('y') or play_again.startswith('n'):
-            break
-        prompt(messages("not_valid"))
-        prompt("Please enter 'y' or 'n'")
+        prompt(f"Would you like to play again, {PLAYER_NAME}? (y/n)")
         play_again = input().lower().strip()
-    #PRINT goodbye message
-    if play_again.startswith('n'):
-        prompt(messages("thanks"))
-        break
-    
+
+        #validate input
+        while True:
+            if play_again.startswith('y') or play_again.startswith('n'):
+                break
+            prompt(messages("not_valid"))
+            prompt("Please enter 'y' or 'n'")
+            play_again = input().lower().strip()
+        #PRINT goodbye message
+        if play_again.startswith('n'):
+            prompt(messages("thanks"))
+            break
+
 #END
