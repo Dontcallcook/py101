@@ -1,6 +1,6 @@
 {
     "input_name" : "Before we begin playing...what's your name?",
-    "not_valid" : "Hmm...your choice isn'nt valid!",
+    "not_valid" : "Hmm...your choice isn't valid!",
     "countdown_message" : "GET READY TO BATTLE!!! >:OOO",
     "winning_message" : "$$$$***$$**$ You win! :D $**$$***$$$$",
     "losing_message" : "Sorry, you lose! :*(",
