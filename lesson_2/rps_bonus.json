@@ -5,8 +5,8 @@
     "winning_message" : "$$$$***$$**$ You win! :D $**$$***$$$$",
     "losing_message" : "Sorry, you lose! :*(",
     "tie_message" : "It's a tie!",
-    "enter_y_n" : "Please enter 'y' or 'n'",
-    "thanks" : "Ok, thanks for playing Rock, Paper, Scissors, Lizard, Spock!",
+    "enter_y_n" : "Please enter 'y' or 'n'.",
+    "goodbye" : "Ok, thanks for playing Rock, Paper, Scissors, Lizard, Spock!",
     "seperator" : "<-------------------------------------------------------->",
     "empty_seperator" : ""
 }
